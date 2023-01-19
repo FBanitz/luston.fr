@@ -10,7 +10,7 @@ const urls = {
 }
 
 // let buildingsRawData = "";
-let buildingsRawDataDiv = document.querySelector('#buildingsRawData');
+let buildingsRawDataDiv = document.querySelector('#buildings-raw-data');
 let buildingsDiv = document.querySelector('#buildings');
 
 let exchangeData = await fetch(urls.allExchanges)
@@ -51,9 +51,15 @@ for (let i = 0; i < allMaterials.length; i++) {
     
 let buildingsRawData = JSON.stringify(allBuildings, undefined, 2);
 
-if (buildingsRawDataDiv != null)
-buildingsRawDataDiv.innerHTML = '<pre>' + buildingsRawData + '</pre>';
-
+if (buildingsRawDataDiv != null) {
+  var buildingsRawDataHTML
+  buildingsRawDataHTML =  '<div class="d-flex flex-row justify-content-between align-items-center">';
+  buildingsRawDataHTML +=     '<div><span class="badge text-bg-success">GET</span> https://rest.fnar.net/building/allBuildings <a href="https://doc.fnar.net/#/building/get_building_allbuildings" target="_blank"><i class="bi bi-info-circle"></i></a></div>';
+  buildingsRawDataHTML +=     '<a class="btn btn-outline-secondary" role="button" href="data:text/plain;charset=utf-8,' + encodeURIComponent(buildingsRawData) + '" download="buildings.json"><i class="bi bi-download"></i></a>';
+  buildingsRawDataHTML += '</div>';
+  buildingsRawDataHTML += '<pre>' + buildingsRawData + '</pre>';
+  buildingsRawDataDiv.innerHTML = buildingsRawDataHTML;
+}
 if (buildingsDiv != null) {
   buildingsDiv.innerHTML = buildHtmlBuildings(allBuildings, allexpertises, allMaterials);
 }
