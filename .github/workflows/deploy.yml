@@ -1,7 +1,7 @@
 on: 
   push:
     branches:
-    - prod
+    - master
   workflow_dispatch:
 name: Deploy FTP 🚀
 jobs:
