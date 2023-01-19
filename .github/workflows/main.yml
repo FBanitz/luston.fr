@@ -26,3 +26,4 @@ jobs:
           **/node_modules/**
           Symphony-tuto.md
           docker-compose*.yml
+          .vscode/
