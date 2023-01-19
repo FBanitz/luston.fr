@@ -20,9 +20,9 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: ${{ secrets.ftp_dir }}
-        dangerous-clean-slate : $clean_slate
+        dangerous-clean-slate : $CLEAN_SLATE
         exclude: |
-          $exclude
+          $EXCLUDE
           **/.git*
           **/.git*/**
           **/node_modules/**
